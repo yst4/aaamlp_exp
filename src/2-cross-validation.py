@@ -79,3 +79,5 @@ def evaluate_train_and_test(model, train_df, test_df, features, target_col="qual
 
 # example
 train_acc, test_acc = evaluate_train_and_test(clf, df_train, df_test, cols)
+
+print(f"Accuracy_score > train : {train_acc}, test : {test_acc}")
