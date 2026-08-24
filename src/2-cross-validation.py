@@ -54,3 +54,28 @@ clf = tree.DecisionTreeClassifier(max_depth=3)
 cols = df.columns.drop("quality")
 
 clf.fit(df_train[cols], df_train.quality); # ; is for canceling to display the result. its too long!
+train_predictions = clf.predict(df_train[cols])
+test_predictions = clf.predict(df_test[cols])
+
+train_accuracy = metrics.accuracy_score(
+    df_train.quality, train_predictions
+)
+
+test_accuracy = metrics.accuracy_score(
+    df_test.quality, test_predictions
+)
+
+# another method using helper functions
+def evaluate_train_and_test(model, train_df, test_df, features, target_col="quality"):
+    """return a pair of accuracy score of train-and-test data"""
+    train_acc = metrics.accuracy_score(
+        train_df[target_col], model.predict(train_df[features])
+    )
+    test_acc = metrics.accuracy_score(
+        test_df[target_col], model.predict(test_df[features])
+    )
+
+    return train_acc, test_acc
+
+# example
+train_acc, test_acc = evaluate_train_and_test(clf, df_train, df_test, cols)
