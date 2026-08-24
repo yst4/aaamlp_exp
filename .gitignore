@@ -13,3 +13,8 @@ wheels/
 .env
 .env.local
 .env.*.local
+
+# .gitignore に追記
+input/
+models/
+output/
