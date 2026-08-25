@@ -51,8 +51,8 @@ for depth in range(1, max_depth):
 
     results.append((depth, train_acc, test_acc))
 
-    ### depict
-    depths, train_accs, test_accs = zip(*results)
+### depict
+depths, train_accs, test_accs = zip(*results)
 
 plt.figure(figsize=(10, 6))
 plt.plot(depths, train_accs, label="train accuracy")
