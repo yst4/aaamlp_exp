@@ -33,9 +33,39 @@ The code in this repository is rewritten to adapt to the updated APIs of these l
 $ tree aaamlp_exp/ -L 3
 aaamlp_exp/
 ├── README.md
+├── ch01_03_basics
+│   ├── pyproject.toml
+│   └── src
+│       ├── 1-mnist.py
+│       ├── 2-cross-valid-max-depth.py
+│       ├── 2-cross-validation-refactoring.py
+│       └── 2-cross-validation.py
+├── ch04_categorical
+│   ├── pyproject.toml
+│   └── src
+├── ch05_images
+│   ├── README.md
+│   ├── pyproject.toml
+│   └── src
+│       └── ch05_images
 ├── input
+│   ├── adult.csv
+│   ├── adult_folds.csv
+│   ├── cat_test.csv
+│   ├── cat_train.csv
+│   ├── cat_train_folds.csv
+│   ├── imdb.csv
+│   ├── imdb_folds.csv
+│   ├── mnist_test.csv
+│   ├── mnist_train.csv
+│   ├── mnist_train_folds.csv
+│   ├── mobile_train.csv
+│   └── winequality-red.csv
 ├── main.py
 ├── models
+├── modify_points
+│   ├── pandas.md
+│   └── readme.md
 ├── notebooks
 ├── output
 ├── pyproject.toml
@@ -73,6 +103,6 @@ output/
 To unpack the dataset to the input from Kaggle site. 
 
 ```
-$ cd input/
+$ mkdir input && cd input/
 $ kaggle datasets download -d abhishek/aaamlp --path ./my_data --unzip
 ```
