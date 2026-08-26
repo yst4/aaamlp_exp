@@ -1,14 +1,5 @@
 [project]
 name = "ch05-images"
 version = "0.1.0"
-description = "Add your description here"
-readme = "README.md"
-authors = [
-    { name = "Yasuto TAKENAKA", email = "y.takenaka@gmail.com" }
-]
 requires-python = ">=3.12"
 dependencies = []
-
-[build-system]
-requires = ["uv_build>=0.9.17,<0.10.0"]
-build-backend = "uv_build"
