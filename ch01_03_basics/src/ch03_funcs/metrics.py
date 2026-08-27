@@ -2,7 +2,14 @@ import numpy as np
 from collections import Counter
 
 def indicator(y, target_class):
-    """指定した target_class でラベルを二値化(1/0)する指示関数"""
+    """
+    A function that binarizes labels (1/0) based on the specified `target_class`.
+    Args:
+        y: list of true values
+        target_class:
+    Results:
+        list of 0/1 sequence.
+    """
     return [1 if p == target_class else 0 for p in y]
 
 def accuracy(y_true, y_pred):
