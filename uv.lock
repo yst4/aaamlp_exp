@@ -398,7 +398,7 @@ requires-dist = [{ name = "category-encoders", specifier = ">=2.6.0" }]
 [[package]]
 name = "ch05-images"
 version = "0.1.0"
-source = { editable = "ch05_images" }
+source = { virtual = "ch05_images" }
 
 [[package]]
 name = "charset-normalizer"

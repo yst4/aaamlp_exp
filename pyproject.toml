@@ -15,8 +15,13 @@ dependencies = [
     "torch>=2.13.0",
     "transformers>=5.15.1",
 ]
+
 [tool.basedpyright]
-reportUnusedCallResult = "none"
+
+[tool.pyrefly]
+extraPaths = [
+    "./ch01_03_basics/src"
+]
 
 [tool.uv.workspace]
 members = [
