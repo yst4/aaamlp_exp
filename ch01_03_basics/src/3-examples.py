@@ -170,3 +170,40 @@ sns.set(font_scale=2.5)
 sns.heatmap(cm, annot=True, cmap=cmap, cbar=False)
 plt.ylabel('Actual Labels', fontsize=20)
 plt.xlabel('Predicated labels', fontsize=20)
+plt.show()
+
+y_true = [
+    [1, 2, 3],
+    [0, 2],
+    [1],
+    [2, 3],
+    [1, 0],
+    []
+  ]
+
+y_pred = [
+      [0, 1, 2],
+      [1],
+      [0, 2, 3],
+      [2, 3, 4, 0],
+      [0, 1, 2],
+      [0]
+    ]
+
+for i in range(len(y_true)):
+    for j in range(1, 4):
+        print(
+            f"""
+            y_true={y_true[i]},
+            y_pred={y_pred[i]},
+            AP@{j}={ch03.apk(y_true[i], y_pred[i], k=j)}
+            """
+        )
+print_func("mapk(k=1)", ch03.mapk(y_true, y_pred, k=1))
+print_func("mapk(k=2)", ch03.mapk(y_true, y_pred, k=2))
+print_func("mapk(k=3)", ch03.mapk(y_true, y_pred, k=3))
+print_func("mapk(k=4)", ch03.mapk(y_true, y_pred, k=4))
+y_true = [1, 2, 3, 1, 2, 3, 1, 2, 3]
+y_pred = [2, 1, 3, 1, 2, 3, 3, 1, 2]
+print_func("sklearn:cohen_kappa_score",metrics.cohen_kappa_score(y_true, y_pred, weights="quadratic"))
+print_func("sklearn:accuracy_score", metrics.accuracy_score(y_true, y_pred))
