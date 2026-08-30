@@ -18,12 +18,22 @@ dependencies = [
 ]
 
 [tool.basedpyright]
-
-[tool.pyrefly]
+# extraPath : complimations from lsp.
 extraPaths = [
-    "./ch01_03_basics/src"
+    # "./ch01_03_basics/src",
+    # "./ch01_03_basics/src/ch03_funcs",
+    "./ch04_categorical/src",
+    "."
 ]
 
+[tool.pyrefly]
+# earch-path: complimations from lsp
+search-path = [
+    # "./ch01_03_basics/src",
+    # "./ch01_03_basics/src/ch03_funcs",
+    "./ch04_categorical/src",
+    "."
+]
 [tool.uv.workspace]
 members = [
     "ch04_categorical",
