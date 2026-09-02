@@ -22,8 +22,9 @@ dependencies = [
 extraPaths = [
     # "./ch01_03_basics/src",
     # "./ch01_03_basics/src/ch03_funcs",
-    "./ch04_categorical/src",
-    "."
+    # "./ch04_categorical/src",
+    ".",
+    "./input"
 ]
 
 [tool.pyrefly]
@@ -31,8 +32,9 @@ extraPaths = [
 search-path = [
     # "./ch01_03_basics/src",
     # "./ch01_03_basics/src/ch03_funcs",
-    "./ch04_categorical/src",
-    "."
+    # "./ch04_categorical/src",
+    ".",
+    "./input"
 ]
 [tool.uv.workspace]
 members = [
