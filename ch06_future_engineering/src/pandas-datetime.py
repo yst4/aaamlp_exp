@@ -14,7 +14,7 @@ from tsfresh.feature_extraction import feature_calculators as fc
 
 s = pd.date_range('2020-01-06', '2020-01-10', freq='10h').to_series()
 
-futures = {
+features = {
     "dayofweek": s.dt.dayofweek.values,
     "dayofyear": s.dt.dayofyear.values,
     "hour": s.dt.hour.values,
@@ -35,36 +35,36 @@ def generate_features(df):
     return df.assign(**features)
 
 
-future_dict = {}
+feature_dict = {}
 
-future_dict['mean'] = np.mean()
-future_dict['max'] = np.max()
-future_dict['min'] = np.min()
-future_dict['std'] = np.std()
-future_dict['var'] = np.var()
-future_dict['ptp'] = np.ptp()
+feature_dict['mean'] = np.mean()
+feature_dict['max'] = np.max()
+feature_dict['min'] = np.min()
+feature_dict['std'] = np.std()
+feature_dict['var'] = np.var()
+feature_dict['ptp'] = np.ptp()
 
-future_dict['10'] = np.percentile(x, 10)
-future_dict['60'] = np.percentile(x, 60)
-future_dict['90'] = np.percentile(x, 90)
+feature_dict['10'] = np.percentile(x, 10)
+feature_dict['60'] = np.percentile(x, 60)
+feature_dict['90'] = np.percentile(x, 90)
 
-future_dict['5'] = np.quantile(x, 5)
-future_dict['95'] = np.quantile(x, 95)
-future_dict['99'] = np.quantile(x, 99)
+feature_dict['5'] = np.quantile(x, 5)
+feature_dict['95'] = np.quantile(x, 95)
+feature_dict['99'] = np.quantile(x, 99)
 
 stats = ['mean', 'max', 'min', 'std', 'var', 'ptp']
 
 # np というモジュールから文字列と同名の関数を取り出して実行する
-future_dict2 = {name: getattr(np, name)(x) for name in stats}
+feature_dict2 = {name: getattr(np, name)(x) for name in stats}
 
-future_dict
+feature_dict
 funcs = [np.mean, np.max, np.min, np.std, np.var, np.ptp]
-future_dict3 = {f.__name__: f(x) for f in funcs}
-future_dict3
+feature_dict3 = {f.__name__: f(x) for f in funcs}
+feature_dict3
 
 
-future_dict['abs_energy'] = fc.abs_energy(x)
-future_dict['count_above_mean'] = fc.count_above_mean(x)
-future_dict['count_below_mean'] = fc.count_below_mean(x)
-future_dict['mean_abs_change'] = fc.mean_abs_change(x)
-future_dict['mean_change'] = np.mean(np.diff(x))
+feature_dict['abs_energy'] = fc.abs_energy(x)
+feature_dict['count_above_mean'] = fc.count_above_mean(x)
+feature_dict['count_below_mean'] = fc.count_below_mean(x)
+feature_dict['mean_abs_change'] = fc.mean_abs_change(x)
+feature_dict['mean_change'] = np.mean(np.diff(x))
