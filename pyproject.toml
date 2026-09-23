@@ -48,6 +48,7 @@ members = [
     "ch05_images",
     "ch06_future_engineering",
     "ch07_future_selection",
+    "ch08_hparam_opt",
 ]
 
 [dependency-groups]
