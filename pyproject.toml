@@ -47,6 +47,7 @@ members = [
     "ch01_03_basics",
     "ch05_images",
     "ch06_future_engineering",
+    "ch07_future_selection",
 ]
 
 [dependency-groups]

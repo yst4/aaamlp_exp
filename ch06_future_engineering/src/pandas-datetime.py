@@ -1,3 +1,5 @@
+from pandas.core.indexes.base import FloatNotNumpy16DtypeArg
+from calendar import month
 from tsfresh.feature_extraction.feature_calculators import mean_abs_change
 from tsfresh.feature_extraction.feature_calculators import count_below_mean
 from tsfresh.feature_extraction.feature_calculators import count_above_mean
@@ -32,8 +34,45 @@ def generate_features(df):
         'weekofyear': dt.isocalendar().week,
         'weekend': dt.dayofweek >= 5,
     }
-    return df.assign(**features)
+    # df.assign(**features) は非破壊的（新しいDataFrameを返す）ため、代入が必要です
+    df = df.assign(**features)
 
+    aggs = {}
+
+    aggs['month'] = ['unique',  'mean']
+    aggs['weekofyear'] = ['unique',  'mean']
+    aggs['num1'] = ['sum', 'max',' min', 'mean']
+    aggs['customer_id'] = ['size',  'unique']
+
+    agg_df = df.groupby('customer_id').agg(aggs)
+    agg_df = agg_df.reset_index()
+    return agg_df
+
+### another solution of generate_future  by Gemini
+def generate_features2(df):
+    aggs = {
+        'month': ['nunique', 'mean'],
+        'weekofyear': ['nunique', 'mean'],
+        'num1': ['sum', 'max', 'min', 'mean'],
+        'customer_id': ['size', 'nunique']
+    }
+
+    return (
+        df
+        .assign(
+            year=lambda x: x['date'].dt.year,
+            month=lambda x: x['date'].dt.month,
+            dayofweek=lambda x: x['date'].dt.dayofweek,
+            weekofyear=lambda x: x['date'].dt.isocalendar().week,
+            weekend=lambda x: x['date'].dt.dayofweek >= 5,
+        )
+        .groupby('customer_id', as_index=False)
+        .agg(aggs)
+        .pipe(lambda d: d.set_axis([
+            f'{c0}_{c1}' if c1 else c0
+            for c0, c1 in d.columns
+        ], axis=1))
+    )
 
 feature_dict = {}
 
